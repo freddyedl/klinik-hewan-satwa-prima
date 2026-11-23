@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Klinik Hewan Satwa Prima – Klinik Hewan di Manado, Tamansari Metropolitan. Layanan veteriner profesional: konsultasi, vaksinasi, bedah, grooming & penitipan. Buka Senin–Minggu 09.00–16.00 WITA." />
+  <title>Klinik Hewan Satwa Prima – Manado</title>
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+      background: #f8fafb;
+      color: #1e2a35;
+      line-height: 1.65;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --teal-900: #0d4a45;
+      --teal-700: #0f7a6e;
+      --teal-600: #12998a;
+      --teal-500: #17b8a4;
+      --teal-100: #d0f5f1;
+      --teal-50:  #edfaf8;
+      --amber:    #f59e0b;
+      --coral:    #f97316;
+      --coral-dark: #c05208;
+      --bg-main:  #f8fafb;
+      --bg-white: #ffffff;
+      --bg-slate: #f1f5f9;
+      --border:   #e2e8f0;
+      --text-dark:#1e2a35;
+      --text-mid: #3d5166;
+      --text-muted:#64788e;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 4px rgba(0,0,0,.07);
+      --shadow-md: 0 4px 16px rgba(0,0,0,.09);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
+      --transition: .2s ease;
+    }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+    .section-pad { padding: 80px 0; }
+    .section-pad-sm { padding: 60px 0; }
+    .section-title { font-size: clamp(1.5rem,3vw,2.1rem); font-weight: 700; color: var(--teal-900); line-height: 1.25; }
+    .section-subtitle { font-size: 1rem; color: var(--text-muted); margin-top: 8px; max-width: 560px; }
+    .text-center { text-align: center; }
+    .text-center .section-subtitle { margin: 8px auto 0; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 24px; border-radius: 50px; font-weight: 600; font-size: .95rem;
+      border: none; transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .btn-primary { background: var(--coral); color: #fff; }
+    .btn-primary:hover { background: var(--coral-dark); }
+    .btn-outline { background: transparent; color: var(--teal-700); border: 2px solid var(--teal-600); }
+    .btn-outline:hover { background: var(--teal-50); }
+    .btn-teal { background: var(--teal-600); color: #fff; }
+    .btn-teal:hover { background: var(--teal-700); }
+    .badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 4px 12px; border-radius: 50px; font-size: .78rem; font-weight: 600;
+    }
+    .badge-teal { background: var(--teal-100); color: var(--teal-700); }
+    .badge-amber { background: #fef3c7; color: #92400e; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .card {
+      background: var(--bg-white); border-radius: var(--radius-md);
+      border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; clip: rect(0,0,0,0); overflow: hidden; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    #navbar {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow var(--transition);
+    }
+    #navbar.scrolled { box-shadow: var(--shadow-md); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; gap: 24px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; }
+    .nav-brand-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: var(--teal-600); display: flex; align-items: center; justify-content: center;
+    }
+    .nav-brand-icon svg { width: 22px; height: 22px; fill: #fff; }
+    .nav-brand-name { font-size: 1.08rem; font-weight: 700; color: var(--teal-900); line-height: 1.1; }
+    .nav-brand-name span { display: block; font-size: .7rem; font-weight: 500; color: var(--text-muted); }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      padding: 7px 13px; border-radius: 8px; font-size: .9rem; font-weight: 500;
+      color: var(--text-mid); transition: background var(--transition), color var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active { background: var(--teal-50); color: var(--teal-700); }
+    .nav-cta { flex-shrink: 0; }
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      width: 40px; height: 40px; background: none; border: none; padding: 4px;
+    }
+    .hamburger span { display: block; height: 2px; background: var(--text-dark); border-radius: 2px; transition: .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; flex-direction: column; gap: 4px;
+      padding: 12px 20px 20px; background: var(--bg-white);
+      border-top: 1px solid var(--border);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 10px 14px; border-radius: 8px; font-size: .95rem; font-weight: 500;
+      color: var(--text-mid); transition: background var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--teal-50); color: var(--teal-700); }
+    .mobile-menu .btn { margin-top: 8px; justify-content: center; }
+
+    /* ============================================================
+       HERO — bright light theme with illustrated animals
+    ============================================================ */
+    #beranda {
+      background: linear-gradient(145deg, #e8fdf8 0%, #f0fdf9 40%, #fef9ec 75%, #fff7f0 100%);
+      color: var(--text-dark); padding: 90px 0 70px;
+      position: relative; overflow: hidden;
+    }
+    /* Decorative blobs */
+    #beranda::before {
+      content: ''; position: absolute;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(23,184,164,.13) 0%, transparent 70%);
+      top: -160px; right: -100px; pointer-events: none;
+    }
+    #beranda::after {
+      content: ''; position: absolute;
+      width: 420px; height: 420px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,115,22,.09) 0%, transparent 70%);
+      bottom: -120px; left: -80px; pointer-events: none;
+    }
+    .hero-blob-mid {
+      position: absolute; width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,158,11,.08) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      pointer-events: none;
+    }
+    .hero-layout { display: grid; grid-template-columns: 1fr 460px; gap: 60px; align-items: center; position: relative; z-index: 1; }
+    .hero-eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+    .hero-eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal-600); flex-shrink: 0; }
+    .hero-eyebrow-text { font-size: .88rem; font-weight: 700; color: var(--teal-700); letter-spacing: .06em; text-transform: uppercase; }
+    .hero-title { font-size: clamp(2rem,4.5vw,3rem); font-weight: 800; line-height: 1.18; margin-bottom: 20px; color: var(--teal-900); }
+    .hero-title em { font-style: normal; color: var(--coral); }
+    .hero-subtitle { font-size: 1.05rem; color: var(--text-mid); margin-bottom: 36px; max-width: 500px; line-height: 1.7; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 40px; }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 12px; }
+    .trust-pill {
+      display: flex; align-items: center; gap: 8px;
+      background: #fff; border: 1.5px solid var(--teal-100);
+      border-radius: 50px; padding: 8px 16px; font-size: .82rem; font-weight: 600;
+      color: var(--teal-800, #0d5e54); box-shadow: var(--shadow-sm);
+    }
+    .trust-pill svg { width: 16px; height: 16px; fill: var(--teal-600); flex-shrink: 0; }
+
+    /* Right-side visual panel */
+    .hero-visual { display: flex; flex-direction: column; gap: 16px; }
+
+    /* Animal illustration stage */
+    .hero-animals-stage {
+      background: #fff; border-radius: 24px;
+      border: 1.5px solid var(--teal-100);
+      box-shadow: 0 6px 32px rgba(18,153,138,.12);
+      padding: 28px 20px 16px;
+      display: flex; flex-direction: column; align-items: center; gap: 0;
+      position: relative; overflow: hidden;
+    }
+    .hero-animals-stage::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 0%, rgba(23,184,164,.07) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 100%, rgba(249,115,22,.06) 0%, transparent 60%);
+    }
+    .hero-animals-row {
+      display: flex; align-items: flex-end; justify-content: center;
+      gap: 8px; position: relative; z-index: 1;
+    }
+    .animal-card {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      flex: 1;
+    }
+    .animal-figure {
+      border-radius: 18px; padding: 10px 8px 4px;
+      display: flex; flex-direction: column; align-items: center;
+      position: relative; background: transparent;
+    }
+    .animal-figure.cat    { background: linear-gradient(170deg, #fff8f0 0%, #fef3e2 100%); }
+    .animal-figure.dog    { background: linear-gradient(170deg, #f0faf5 0%, #e6f7ee 100%); }
+    .animal-figure.rabbit { background: linear-gradient(170deg, #faf8ff 0%, #f3f0fe 100%); }
+    .animal-label {
+      font-size: .72rem; font-weight: 700; padding: 3px 10px;
+      border-radius: 20px; margin-top: 6px;
+    }
+    .animal-label.cat    { background: #fef3c7; color: #92400e; }
+    .animal-label.dog    { background: #dcfce7; color: #14532d; }
+    .animal-label.rabbit { background: #ede9fe; color: #4c1d95; }
+
+    .hero-animals-banner {
+      width: 100%; margin-top: 16px; padding: 10px 0 2px;
+      border-top: 1px solid var(--teal-100); position: relative; z-index: 1;
+      display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+    }
+    .animal-stat {
+      text-align: center;
+    }
+    .animal-stat .num { font-size: 1.1rem; font-weight: 800; color: var(--teal-700); }
+    .animal-stat .lbl { font-size: .68rem; color: var(--text-muted); font-weight: 500; }
+
+    /* Info cards */
+    .hero-card {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg); padding: 20px 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-card-title { font-size: .75rem; font-weight: 700; color: var(--teal-600); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; }
+    .hero-hours { display: flex; align-items: center; gap: 10px; }
+    .hours-block { text-align: center; flex: 1; }
+    .hours-block .time { font-size: 1.45rem; font-weight: 800; color: var(--teal-900); }
+    .hours-block .label { font-size: .7rem; color: var(--text-muted); }
+    .hours-sep { font-size: 1.3rem; color: var(--teal-500); font-weight: 700; }
+    .hours-days { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: .8rem; color: var(--text-mid); display: flex; align-items: center; gap: 6px; }
+    .hours-days svg { width: 14px; height: 14px; fill: var(--teal-600); }
+    .hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .stat-item { text-align: center; }
+    .stat-item .num { font-size: 1.5rem; font-weight: 800; color: var(--teal-700); }
+    .stat-item .desc { font-size: .7rem; color: var(--text-muted); line-height: 1.3; margin-top: 2px; }
+
+    /* ============================================================
+       LAYANAN
+    ============================================================ */
+    #layanan { background: var(--bg-white); }
+    .service-filter { display: flex; flex-wrap: wrap; gap: 10px; margin: 32px 0; }
+    .filter-btn {
+      padding: 8px 20px; border-radius: 50px; font-size: .88rem; font-weight: 600;
+      border: 2px solid var(--border); background: var(--bg-white); color: var(--text-mid);
+      transition: all var(--transition);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--teal-600); background: var(--teal-50); color: var(--teal-700);
+    }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 24px; }
+    .service-card {
+      background: var(--bg-white); border-radius: var(--radius-md);
+      border: 1px solid var(--border); padding: 28px; transition: all var(--transition);
+      cursor: default;
+    }
+    .service-card:hover { box-shadow: var(--shadow-md); border-color: var(--teal-100); transform: translateY(-2px); }
+    .service-card[data-hidden="true"] { display: none; }
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 14px; margin-bottom: 18px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--teal-50);
+    }
+    .service-icon svg { width: 26px; height: 26px; fill: var(--teal-600); }
+    .service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--teal-900); margin-bottom: 8px; }
+    .service-card p { font-size: .88rem; color: var(--text-muted); line-height: 1.6; }
+    .service-card .cat-badge { margin-top: 16px; }
+
+    /* ============================================================
+       DOKTER
+    ============================================================ */
+    #dokter { background: var(--bg-slate); }
+    .doctors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 24px; margin-top: 40px; }
+    .doctor-card {
+      background: var(--bg-white); border-radius: var(--radius-md);
+      border: 1px solid var(--border); padding: 28px; text-align: center;
+      transition: all var(--transition);
+    }
+    .doctor-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .doctor-avatar {
+      width: 110px; height: 110px; border-radius: 50%; margin: 0 auto 16px;
+      overflow: hidden; border: 3px solid var(--teal-100);
+      box-shadow: 0 4px 16px rgba(18,153,138,.15);
+      background: var(--teal-50);
+      display: flex; align-items: flex-end; justify-content: center;
+    }
+    .doctor-avatar svg { width: 100%; height: auto; display: block; }
+    .doctor-name { font-size: 1.08rem; font-weight: 700; color: var(--teal-900); }
+    .doctor-spec { font-size: .85rem; color: var(--teal-600); font-weight: 600; margin: 4px 0 12px; }
+    .doctor-meta { font-size: .82rem; color: var(--text-muted); margin-top: 4px; }
+    .doctor-schedule {
+      margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);
+      font-size: .82rem; color: var(--text-mid); display: flex; align-items: center; gap: 6px; justify-content: center;
+    }
+    .doctor-schedule svg { width: 14px; height: 14px; fill: var(--teal-600); flex-shrink: 0; }
+
+    /* ============================================================
+       BOOKING FORM
+    ============================================================ */
+    #booking { background: linear-gradient(135deg, var(--teal-50), var(--bg-white)); }
+    .booking-layout { display: grid; grid-template-columns: 400px 1fr; gap: 48px; align-items: start; }
+    .booking-info h2 { margin-bottom: 16px; }
+    .booking-info p { font-size: .95rem; color: var(--text-muted); margin-bottom: 28px; }
+    .info-list { display: flex; flex-direction: column; gap: 14px; }
+    .info-item { display: flex; align-items: flex-start; gap: 12px; }
+    .info-item-icon {
+      width: 36px; height: 36px; border-radius: 10px; background: var(--teal-100);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .info-item-icon svg { width: 18px; height: 18px; fill: var(--teal-700); }
+    .info-item-text { font-size: .88rem; }
+    .info-item-text strong { display: block; color: var(--text-dark); font-size: .9rem; }
+    .info-item-text span { color: var(--text-muted); }
+    .form-card { background: var(--bg-white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 36px; box-shadow: var(--shadow-md); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+    .form-group:last-child { margin-bottom: 0; }
+    .form-label { font-size: .85rem; font-weight: 600; color: var(--text-dark); }
+    .form-label .req { color: var(--coral); margin-left: 2px; }
+    .form-control {
+      padding: 11px 14px; border-radius: var(--radius-sm); border: 1.5px solid var(--border);
+      font-size: .9rem; font-family: inherit; color: var(--text-dark); background: var(--bg-white);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .form-control:focus { border-color: var(--teal-600); box-shadow: 0 0 0 3px rgba(18,153,138,.12); }
+    .form-control.invalid { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,.1); }
+    .form-error { font-size: .78rem; color: #ef4444; margin-top: 2px; }
+    select.form-control { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364788e' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .form-submit { width: 100%; padding: 14px; font-size: 1rem; }
+
+    /* ============================================================
+       CONFIRMATION MODAL
+    ============================================================ */
+    #modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,.55); align-items: center; justify-content: center; padding: 20px;
+    }
+    #modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--bg-white); border-radius: var(--radius-lg); padding: 40px;
+      max-width: 500px; width: 100%; box-shadow: var(--shadow-lg); position: relative;
+      animation: modalIn .25s ease;
+    }
+    @keyframes modalIn { from { opacity:0; transform:scale(.93); } to { opacity:1; transform:scale(1); } }
+    .modal-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--teal-100); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .modal-icon svg { width: 32px; height: 32px; fill: var(--teal-600); }
+    .modal-title { font-size: 1.3rem; font-weight: 700; color: var(--teal-900); text-align: center; margin-bottom: 8px; }
+    .modal-sub { font-size: .9rem; color: var(--text-muted); text-align: center; margin-bottom: 24px; }
+    .modal-summary {
+      background: var(--bg-slate); border-radius: var(--radius-md); padding: 20px;
+      display: grid; gap: 10px; margin-bottom: 24px; font-size: .88rem;
+    }
+    .modal-row { display: flex; justify-content: space-between; gap: 12px; }
+    .modal-row .key { color: var(--text-muted); font-weight: 500; }
+    .modal-row .val { font-weight: 600; color: var(--text-dark); text-align: right; }
+    .modal-actions { display: flex; gap: 12px; }
+    .modal-actions .btn { flex: 1; justify-content: center; }
+    .modal-close-x {
+      position: absolute; top: 16px; right: 16px;
+      width: 32px; height: 32px; border-radius: 8px; background: none; border: none;
+      display: flex; align-items: center; justify-content: center; color: var(--text-muted);
+      font-size: 1.3rem; transition: background var(--transition);
+    }
+    .modal-close-x:hover { background: var(--bg-slate); color: var(--text-dark); }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    #faq { background: var(--bg-white); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px; }
+    .accordion-item {
+      border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .accordion-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 18px 20px; background: var(--bg-white); border: none;
+      font-size: .95rem; font-weight: 600; color: var(--text-dark); text-align: left;
+      transition: background var(--transition);
+    }
+    .accordion-btn:hover { background: var(--teal-50); }
+    .accordion-btn.open { color: var(--teal-700); background: var(--teal-50); }
+    .accordion-arrow { width: 20px; height: 20px; fill: var(--text-muted); flex-shrink: 0; transition: transform .3s; }
+    .accordion-btn.open .accordion-arrow { transform: rotate(180deg); fill: var(--teal-600); }
+    .accordion-body {
+      max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease;
+      padding: 0 20px; font-size: .88rem; color: var(--text-mid); line-height: 1.7;
+    }
+    .accordion-body.open { max-height: 300px; padding: 0 20px 18px; }
+
+    /* ============================================================
+       TESTIMONI
+    ============================================================ */
+    #testimoni { background: var(--bg-slate); }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
+    .testi-card {
+      background: var(--bg-white); border-radius: var(--radius-md);
+      border: 1px solid var(--border); padding: 24px; transition: all var(--transition);
+    }
+    .testi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .testi-stars { color: var(--amber); font-size: 1rem; margin-bottom: 12px; letter-spacing: 2px; }
+    .testi-text { font-size: .9rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 16px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal-500), var(--teal-900));
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .testi-name { font-size: .9rem; font-weight: 700; color: var(--text-dark); }
+    .testi-pet { font-size: .78rem; color: var(--text-muted); }
+
+    /* ============================================================
+       LOKASI
+    ============================================================ */
+    #lokasi { background: var(--bg-white); }
+    .lokasi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+    .location-card {
+      background: var(--bg-slate); border-radius: var(--radius-lg); border: 1px solid var(--border);
+      padding: 32px;
+    }
+    .location-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--teal-900); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .location-card h3 svg { width: 20px; height: 20px; fill: var(--teal-600); }
+    .location-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+    .location-row:last-of-type { margin-bottom: 0; }
+    .loc-icon { width: 34px; height: 34px; border-radius: 9px; background: var(--teal-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .loc-icon svg { width: 16px; height: 16px; fill: var(--teal-700); }
+    .loc-text strong { display: block; font-size: .85rem; color: var(--text-dark); }
+    .loc-text span { font-size: .82rem; color: var(--text-muted); }
+    .map-placeholder {
+      border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-slate);
+      border: 1px solid var(--border); height: 100%; min-height: 340px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 16px; position: relative;
+    }
+    .map-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(rgba(13,74,69,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(13,74,69,.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .map-pin-wrap { position: relative; z-index: 1; text-align: center; }
+    .map-pin {
+      width: 56px; height: 56px; border-radius: 50%; background: var(--teal-600);
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;
+      box-shadow: 0 0 0 10px rgba(18,153,138,.15), 0 0 0 20px rgba(18,153,138,.07);
+      animation: pinPulse 2.5s infinite;
+    }
+    .map-pin svg { width: 26px; height: 26px; fill: #fff; }
+    @keyframes pinPulse {
+      0%,100% { box-shadow: 0 0 0 10px rgba(18,153,138,.15), 0 0 0 20px rgba(18,153,138,.07); }
+      50% { box-shadow: 0 0 0 14px rgba(18,153,138,.12), 0 0 0 28px rgba(18,153,138,.04); }
+    }
+    .map-label { font-size: .9rem; font-weight: 700; color: var(--teal-900); }
+    .map-coord { font-size: .78rem; color: var(--text-muted); margin-top: 4px; }
+    .coord-copy {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--bg-white); border: 1px solid var(--border); border-radius: 8px;
+      padding: 7px 14px; font-size: .78rem; font-weight: 600; color: var(--text-mid);
+      cursor: pointer; transition: all var(--transition); margin-top: 10px;
+    }
+    .coord-copy:hover { border-color: var(--teal-600); color: var(--teal-700); }
+    .coord-copy svg { width: 13px; height: 13px; fill: currentColor; }
+    .map-actions { display: flex; flex-direction: column; gap: 10px; align-items: center; margin-top: 16px; position: relative; z-index: 1; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--teal-900); color: rgba(255,255,255,.85);
+      padding: 60px 0 0;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr; gap: 40px; margin-bottom: 48px; }
+    .footer-brand .nav-brand-icon { background: rgba(255,255,255,.12); margin-bottom: 16px; }
+    .footer-brand .name { font-size: 1.05rem; font-weight: 700; color: #fff; }
+    .footer-brand .sub { font-size: .8rem; color: rgba(255,255,255,.55); }
+    .footer-brand p { font-size: .85rem; color: rgba(255,255,255,.65); margin-top: 14px; line-height: 1.65; }
+    .footer-heading { font-size: .78rem; font-weight: 700; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: .88rem; color: rgba(255,255,255,.7); transition: color var(--transition); }
+    .footer-links a:hover { color: var(--teal-500); }
+    .footer-contact li {
+      display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px;
+      font-size: .85rem; color: rgba(255,255,255,.75);
+    }
+    .footer-contact li svg { width: 15px; height: 15px; fill: var(--teal-500); flex-shrink: 0; margin-top: 2px; }
+    .footer-contact li a { color: rgba(255,255,255,.75); }
+    .footer-contact li a:hover { color: var(--teal-500); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1); padding: 20px 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      font-size: .8rem; color: rgba(255,255,255,.45); flex-wrap: wrap;
+    }
+    .social-links { display: flex; gap: 10px; }
+    .social-link {
+      width: 34px; height: 34px; border-radius: 9px;
+      background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition);
+    }
+    .social-link:hover { background: rgba(255,255,255,.18); }
+    .social-link svg { width: 15px; height: 15px; fill: rgba(255,255,255,.75); }
+    .wa-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25d366; color: #fff; border: none;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+      transition: transform var(--transition), box-shadow var(--transition);
+      text-decoration: none;
+    }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,.55); }
+    .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1100px) {
+      .hero-layout { grid-template-columns: 1fr 400px; gap: 36px; }
+    }
+    @media (max-width: 1024px) {
+      .hero-layout { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { display: flex; flex-direction: column; }
+      .hero-animals-stage { max-width: 500px; margin: 0 auto; width: 100%; }
+      .booking-layout { grid-template-columns: 1fr; }
+      .booking-info { max-width: 100%; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .lokasi-grid { grid-template-columns: 1fr; }
+      .map-placeholder { min-height: 300px; }
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .section-pad { padding: 56px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-animals-row { gap: 4px; }
+      .animal-figure.cat svg  { width: 65px; height: 72px; }
+      .animal-figure.dog svg  { width: 72px; height: 80px; }
+      .animal-figure.rabbit svg { width: 62px; height: 72px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 1.75rem; }
+      .hero-actions { gap: 10px; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .hero-animals-row { gap: 2px; }
+      .animal-card { flex: 0 0 auto; }
+      .modal-box { padding: 28px 20px; }
+      .modal-actions { flex-direction: column; }
+      .wa-float { bottom: 16px; right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<header id="navbar">
+  <div class="container">
+    <nav class="nav-inner" role="navigation" aria-label="Navigasi Utama">
+      <a href="#beranda" class="nav-brand" aria-label="Satwa Prima – Halaman Utama">
+        <div class="nav-brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.5 2 5.5 4.5 5.5 8c0 2.5 1.5 4.7 3.7 5.7L7 21h10l-2.2-7.3C16.9 12.7 18.5 10.5 18.5 8c0-3.5-3-6-6.5-6zm-2 10.5c-.6-.3-1.1-.8-1.4-1.3l1.4.5v.8zm4 0v-.8l1.4-.5c-.3.5-.8 1-1.4 1.3z"/></svg>
+        </div>
+        <div class="nav-brand-name">
+          Satwa Prima
+          <span>Klinik Hewan Manado</span>
+        </div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#beranda" class="active">Beranda</a></li>
+        <li><a href="#layanan">Layanan</a></li>
+        <li><a href="#dokter">Dokter</a></li>
+        <li><a href="#booking">Jadwal & Booking</a></li>
+        <li><a href="#lokasi">Lokasi</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+      <a href="#booking" class="btn btn-primary nav-cta">Buat Janji Temu</a>
+      <button class="hamburger" id="hamburger" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" role="menu">
+    <a href="#beranda" role="menuitem">Beranda</a>
+    <a href="#layanan" role="menuitem">Layanan</a>
+    <a href="#dokter" role="menuitem">Dokter</a>
+    <a href="#booking" role="menuitem">Jadwal & Booking</a>
+    <a href="#lokasi" role="menuitem">Lokasi</a>
+    <a href="#kontak" role="menuitem">Kontak</a>
+    <a href="#booking" class="btn btn-primary" role="menuitem">Buat Janji Temu</a>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO — bright background with animal illustrations
+============================================================ -->
+<section id="beranda" aria-labelledby="hero-title">
+  <div class="hero-blob-mid" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-layout">
+
+      <!-- LEFT: Text content -->
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-dot"></div>
+          <span class="hero-eyebrow-text">Klinik Hewan Terpercaya di Manado</span>
+        </div>
+        <h1 class="hero-title" id="hero-title">
+          Perawatan Penuh <em>Kasih Sayang</em> untuk Hewan Kesayangan Anda
+        </h1>
+        <p class="hero-subtitle">
+          <strong>Klinik Hewan di Manado Satwa Prima Tamansari</strong> — kami hadir dengan tim dokter hewan berlisensi dan fasilitas modern di <strong>Tamansari Metropolitan, Paniki Bawah</strong>. Buka setiap hari <strong>09.00&nbsp;–&nbsp;16.00 WITA</strong>.
+        </p>
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+            Booking Kunjungan
+          </a>
+          <a href="#layanan" class="btn btn-teal">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-6h2v6zm0-8h-2V7h2v4z"/></svg>
+            Lihat Layanan
+          </a>
+        </div>
+        <div class="hero-trust" role="list" aria-label="Keunggulan klinik">
+          <div class="trust-pill" role="listitem">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            Dokter Hewan Berlisensi
+          </div>
+          <div class="trust-pill" role="listitem">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            Buka 09.00&nbsp;–&nbsp;16.00 Setiap Hari
+          </div>
+          <div class="trust-pill" role="listitem">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Lokasi Strategis Tamansari
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Animal illustrations + info cards -->
+      <div class="hero-visual">
+
+        <!-- Animal photo-style natural portraits -->
+        <div class="hero-animals-stage" role="img" aria-label="Foto hewan peliharaan: kucing, anjing, dan kelinci">
+          <!-- Subtle decorative paws -->
+          <svg aria-hidden="true" style="position:absolute;top:8px;right:12px;opacity:.1;" width="26" height="26" viewBox="0 0 50 50"><ellipse cx="10" cy="7" rx="4" ry="5"/><ellipse cx="22" cy="3" rx="3.5" ry="4.5"/><ellipse cx="33" cy="5" rx="3.5" ry="4.5"/><ellipse cx="42" cy="12" rx="4" ry="5"/><path d="M25 17 C12 17 7 27 9 35 C11 43 17 47 25 47 C33 47 39 43 41 35 C43 27 38 17 25 17Z" fill="#12998a"/></svg>
+
+          <div class="hero-animals-row">
+
+            <!-- ===== KUCING – realistic orange tabby ===== -->
+            <div class="animal-card">
+              <div class="animal-figure cat">
+                <svg width="82" height="96" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="catFur" cx="50%" cy="45%" r="55%">
+                      <stop offset="0%" stop-color="#e8902a"/>
+                      <stop offset="60%" stop-color="#c8720a"/>
+                      <stop offset="100%" stop-color="#9a5000"/>
+                    </radialGradient>
+                    <radialGradient id="catMuzzle" cx="50%" cy="40%" r="60%">
+                      <stop offset="0%" stop-color="#f5d5a0"/>
+                      <stop offset="100%" stop-color="#deb06a"/>
+                    </radialGradient>
+                    <radialGradient id="catEye" cx="35%" cy="35%" r="65%">
+                      <stop offset="0%" stop-color="#a8d840"/>
+                      <stop offset="50%" stop-color="#78b020"/>
+                      <stop offset="100%" stop-color="#3d6010"/>
+                    </radialGradient>
+                  </defs>
+                  <!-- body / torso -->
+                  <ellipse cx="60" cy="118" rx="32" ry="26" fill="url(#catFur)"/>
+                  <!-- chest white patch -->
+                  <ellipse cx="60" cy="115" rx="18" ry="16" fill="#f5e0c0" opacity=".7"/>
+                  <!-- tail curled around body -->
+                  <path d="M88 120 Q110 100 104 78 Q100 62 90 72 Q84 80 90 86" fill="none" stroke="#b06000" stroke-width="8" stroke-linecap="round"/>
+                  <!-- front paws -->
+                  <ellipse cx="44" cy="135" rx="11" ry="7" fill="#c8720a"/>
+                  <ellipse cx="76" cy="135" rx="11" ry="7" fill="#c8720a"/>
+                  <!-- paw toe lines -->
+                  <path d="M38 134 Q44 136 50 134" fill="none" stroke="#9a5000" stroke-width="1" opacity=".6"/>
+                  <path d="M70 134 Q76 136 82 134" fill="none" stroke="#9a5000" stroke-width="1" opacity=".6"/>
+                  <!-- neck -->
+                  <path d="M46 92 Q60 100 74 92" fill="#c8720a"/>
+                  <!-- head -->
+                  <ellipse cx="60" cy="68" rx="34" ry="30" fill="url(#catFur)"/>
+                  <!-- tabby stripe markings on forehead -->
+                  <path d="M48 46 Q52 42 56 46" fill="none" stroke="#8a4800" stroke-width="2" opacity=".5" stroke-linecap="round"/>
+                  <path d="M60 43 Q62 39 64 43" fill="none" stroke="#8a4800" stroke-width="1.5" opacity=".4" stroke-linecap="round"/>
+                  <path d="M64 46 Q68 42 72 46" fill="none" stroke="#8a4800" stroke-width="2" opacity=".5" stroke-linecap="round"/>
+                  <!-- ears outer -->
+                  <polygon points="30,54 18,20 46,42" fill="#c8720a"/>
+                  <polygon points="90,54 102,20 74,42" fill="#c8720a"/>
+                  <!-- ears inner pink -->
+                  <polygon points="33,52 23,28 44,43" fill="#e8a0a0" opacity=".8"/>
+                  <polygon points="87,52 97,28 76,43" fill="#e8a0a0" opacity=".8"/>
+                  <!-- ear fur tip tufts -->
+                  <line x1="20" y1="22" x2="24" y2="30" stroke="#8a4800" stroke-width="1.5" opacity=".4"/>
+                  <line x1="100" y1="22" x2="96" y2="30" stroke="#8a4800" stroke-width="1.5" opacity=".4"/>
+                  <!-- muzzle area -->
+                  <ellipse cx="60" cy="78" rx="20" ry="14" fill="url(#catMuzzle)"/>
+                  <!-- eyes outline -->
+                  <ellipse cx="43" cy="64" rx="9" ry="8" fill="#1a1008"/>
+                  <ellipse cx="77" cy="64" rx="9" ry="8" fill="#1a1008"/>
+                  <!-- iris -->
+                  <ellipse cx="43" cy="64" rx="7.5" ry="6.5" fill="url(#catEye)"/>
+                  <ellipse cx="77" cy="64" rx="7.5" ry="6.5" fill="url(#catEye)"/>
+                  <!-- pupil vertical slit -->
+                  <ellipse cx="43" cy="64" rx="2.5" ry="6" fill="#0a0808"/>
+                  <ellipse cx="77" cy="64" rx="2.5" ry="6" fill="#0a0808"/>
+                  <!-- eye shine -->
+                  <ellipse cx="45.5" cy="61" rx="2.2" ry="1.6" fill="rgba(255,255,255,.75)"/>
+                  <ellipse cx="79.5" cy="61" rx="2.2" ry="1.6" fill="rgba(255,255,255,.75)"/>
+                  <!-- nose -->
+                  <path d="M55 76 L60 73 L65 76 Q63 80 60 81 Q57 80 55 76Z" fill="#d04060"/>
+                  <!-- philtrum line -->
+                  <line x1="60" y1="81" x2="60" y2="84" stroke="#d04060" stroke-width="1.2"/>
+                  <!-- mouth -->
+                  <path d="M54 85 Q60 90 66 85" fill="none" stroke="#8a4000" stroke-width="1.5" stroke-linecap="round"/>
+                  <!-- whiskers left -->
+                  <line x1="12" y1="73" x2="50" y2="77" stroke="#f0e0d0" stroke-width="1.1" opacity=".9"/>
+                  <line x1="12" y1="78" x2="50" y2="79" stroke="#f0e0d0" stroke-width="1.1" opacity=".9"/>
+                  <line x1="14" y1="83" x2="50" y2="81" stroke="#f0e0d0" stroke-width="1" opacity=".8"/>
+                  <!-- whiskers right -->
+                  <line x1="108" y1="73" x2="70" y2="77" stroke="#f0e0d0" stroke-width="1.1" opacity=".9"/>
+                  <line x1="108" y1="78" x2="70" y2="79" stroke="#f0e0d0" stroke-width="1.1" opacity=".9"/>
+                  <line x1="106" y1="83" x2="70" y2="81" stroke="#f0e0d0" stroke-width="1" opacity=".8"/>
+                  <!-- collar -->
+                  <path d="M32 92 Q60 102 88 92" fill="none" stroke="#12998a" stroke-width="4" stroke-linecap="round"/>
+                  <circle cx="60" cy="99" r="4" fill="#f97316"/>
+                </svg>
+              </div>
+              <span class="animal-label cat">Kucing</span>
+            </div>
+
+            <!-- ===== ANJING – realistic golden retriever ===== -->
+            <div class="animal-card" style="transform:scale(1.08);transform-origin:bottom center;">
+              <div class="animal-figure dog">
+                <svg width="92" height="104" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="dogFur" cx="50%" cy="40%" r="60%">
+                      <stop offset="0%" stop-color="#f0b840"/>
+                      <stop offset="55%" stop-color="#d49020"/>
+                      <stop offset="100%" stop-color="#a06000"/>
+                    </radialGradient>
+                    <radialGradient id="dogSnout" cx="50%" cy="45%" r="55%">
+                      <stop offset="0%" stop-color="#f5dca0"/>
+                      <stop offset="100%" stop-color="#d4b06a"/>
+                    </radialGradient>
+                    <radialGradient id="dogEye" cx="30%" cy="30%" r="70%">
+                      <stop offset="0%" stop-color="#8b5a20"/>
+                      <stop offset="60%" stop-color="#5a3010"/>
+                      <stop offset="100%" stop-color="#2a1005"/>
+                    </radialGradient>
+                  </defs>
+                  <!-- body -->
+                  <ellipse cx="60" cy="118" rx="35" ry="27" fill="url(#dogFur)"/>
+                  <!-- chest / belly lighter -->
+                  <ellipse cx="60" cy="116" rx="22" ry="18" fill="#f5d890" opacity=".6"/>
+                  <!-- fluffy tail wagging -->
+                  <path d="M93 112 Q118 94 112 72 Q108 58 98 68 Q92 76 100 82" fill="none" stroke="#c08020" stroke-width="10" stroke-linecap="round"/>
+                  <path d="M93 112 Q118 94 112 72 Q108 58 98 68" fill="none" stroke="#f0c060" stroke-width="4" stroke-linecap="round" opacity=".5"/>
+                  <!-- front legs / paws -->
+                  <ellipse cx="43" cy="135" rx="12" ry="7" fill="#c88010"/>
+                  <ellipse cx="77" cy="135" rx="12" ry="7" fill="#c88010"/>
+                  <path d="M36 134 Q43 137 50 134" fill="none" stroke="#8a5000" stroke-width="1.2" opacity=".6"/>
+                  <path d="M70 134 Q77 137 84 134" fill="none" stroke="#8a5000" stroke-width="1.2" opacity=".6"/>
+                  <!-- floppy ears -->
+                  <ellipse cx="26" cy="62" rx="13" ry="24" fill="#b87818" transform="rotate(-8 26 62)"/>
+                  <ellipse cx="94" cy="62" rx="13" ry="24" fill="#b87818" transform="rotate(8 94 62)"/>
+                  <!-- ear fur sheen -->
+                  <ellipse cx="27" cy="62" rx="7" ry="18" fill="#d49828" opacity=".35" transform="rotate(-8 27 62)"/>
+                  <ellipse cx="93" cy="62" rx="7" ry="18" fill="#d49828" opacity=".35" transform="rotate(8 93 62)"/>
+                  <!-- head -->
+                  <ellipse cx="60" cy="62" rx="36" ry="32" fill="url(#dogFur)"/>
+                  <!-- head fur texture lines -->
+                  <path d="M42 42 Q48 38 54 42" fill="none" stroke="#b87818" stroke-width="1.5" opacity=".35" stroke-linecap="round"/>
+                  <path d="M66 40 Q72 36 78 40" fill="none" stroke="#b87818" stroke-width="1.5" opacity=".35" stroke-linecap="round"/>
+                  <!-- snout -->
+                  <ellipse cx="60" cy="76" rx="22" ry="15" fill="url(#dogSnout)"/>
+                  <!-- eyes -->
+                  <ellipse cx="42" cy="58" rx="10" ry="9" fill="#180c00"/>
+                  <ellipse cx="78" cy="58" rx="10" ry="9" fill="#180c00"/>
+                  <ellipse cx="42" cy="58" rx="8" ry="7.5" fill="url(#dogEye)"/>
+                  <ellipse cx="78" cy="58" rx="8" ry="7.5" fill="url(#dogEye)"/>
+                  <!-- pupil -->
+                  <circle cx="42" cy="58" r="4.5" fill="#100800"/>
+                  <circle cx="78" cy="58" r="4.5" fill="#100800"/>
+                  <!-- eye shine -->
+                  <ellipse cx="44.5" cy="55" rx="2.5" ry="2" fill="rgba(255,255,255,.8)"/>
+                  <ellipse cx="80.5" cy="55" rx="2.5" ry="2" fill="rgba(255,255,255,.8)"/>
+                  <!-- eyebrow ridge fur -->
+                  <path d="M34 51 Q42 48 50 51" fill="none" stroke="#8a5800" stroke-width="2" opacity=".5" stroke-linecap="round"/>
+                  <path d="M70 51 Q78 48 86 51" fill="none" stroke="#8a5800" stroke-width="2" opacity=".5" stroke-linecap="round"/>
+                  <!-- nose -->
+                  <ellipse cx="60" cy="72" rx="9" ry="7" fill="#1a0808"/>
+                  <ellipse cx="57" cy="70" rx="3" ry="2" fill="rgba(255,255,255,.25)"/>
+                  <!-- mouth / smile -->
+                  <path d="M50 80 Q60 88 70 80" fill="none" stroke="#6a3808" stroke-width="2" stroke-linecap="round"/>
+                  <!-- tongue out happy -->
+                  <ellipse cx="60" cy="90" rx="8" ry="9" fill="#e05080"/>
+                  <ellipse cx="60" cy="90" rx="8" ry="9" fill="none" stroke="#b03050" stroke-width="1"/>
+                  <line x1="60" y1="82" x2="60" y2="98" stroke="#b03050" stroke-width="1.2" opacity=".6"/>
+                  <!-- collar -->
+                  <path d="M30 96 Q60 108 90 96" fill="none" stroke="#12998a" stroke-width="5" stroke-linecap="round"/>
+                  <circle cx="60" cy="104" r="4.5" fill="#f97316"/>
+                </svg>
+              </div>
+              <span class="animal-label dog">Anjing</span>
+            </div>
+
+            <!-- ===== KELINCI – realistic white/grey lop rabbit ===== -->
+            <div class="animal-card">
+              <div class="animal-figure rabbit">
+                <svg width="80" height="96" viewBox="0 0 110 136" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="rabFur" cx="50%" cy="40%" r="60%">
+                      <stop offset="0%" stop-color="#f5f0ee"/>
+                      <stop offset="50%" stop-color="#e0d8d4"/>
+                      <stop offset="100%" stop-color="#b8b0ac"/>
+                    </radialGradient>
+                    <radialGradient id="rabBelly" cx="50%" cy="50%" r="55%">
+                      <stop offset="0%" stop-color="#fffcfa"/>
+                      <stop offset="100%" stop-color="#f0ebe6"/>
+                    </radialGradient>
+                    <radialGradient id="rabEye" cx="30%" cy="30%" r="70%">
+                      <stop offset="0%" stop-color="#8060d0"/>
+                      <stop offset="55%" stop-color="#6040b0"/>
+                      <stop offset="100%" stop-color="#301870"/>
+                    </radialGradient>
+                    <radialGradient id="earInner" cx="50%" cy="50%" r="60%">
+                      <stop offset="0%" stop-color="#f0a0b0"/>
+                      <stop offset="100%" stop-color="#d06878"/>
+                    </radialGradient>
+                  </defs>
+                  <!-- body -->
+                  <ellipse cx="55" cy="116" rx="34" ry="26" fill="url(#rabFur)"/>
+                  <!-- belly -->
+                  <ellipse cx="55" cy="114" rx="20" ry="17" fill="url(#rabBelly)"/>
+                  <!-- fluffy cottontail -->
+                  <circle cx="84" cy="116" r="12" fill="#ffffff"/>
+                  <circle cx="84" cy="116" r="9" fill="#f5f2f0"/>
+                  <!-- hind feet -->
+                  <ellipse cx="36" cy="130" rx="16" ry="8" fill="#d8d0cc" transform="rotate(-10 36 130)"/>
+                  <ellipse cx="72" cy="132" rx="16" ry="8" fill="#d8d0cc" transform="rotate(10 72 132)"/>
+                  <!-- front paws tucked -->
+                  <ellipse cx="43" cy="124" rx="10" ry="6" fill="#c8c0bc"/>
+                  <ellipse cx="66" cy="124" rx="10" ry="6" fill="#c8c0bc"/>
+                  <!-- toe lines paw -->
+                  <path d="M37 123 Q43 126 49 123" fill="none" stroke="#a8a0a0" stroke-width="1" opacity=".6"/>
+                  <path d="M60 123 Q66 126 72 123" fill="none" stroke="#a8a0a0" stroke-width="1" opacity=".6"/>
+                  <!-- lop ears hanging down (Holland Lop style) -->
+                  <ellipse cx="28" cy="68" rx="14" ry="30" fill="url(#rabFur)" transform="rotate(20 28 68)"/>
+                  <ellipse cx="28" cy="68" rx="8" ry="22" fill="url(#earInner)" opacity=".7" transform="rotate(20 28 68)"/>
+                  <ellipse cx="82" cy="68" rx="14" ry="30" fill="url(#rabFur)" transform="rotate(-20 82 68)"/>
+                  <ellipse cx="82" cy="68" rx="8" ry="22" fill="url(#earInner)" opacity=".7" transform="rotate(-20 82 68)"/>
+                  <!-- head -->
+                  <ellipse cx="55" cy="62" rx="30" ry="28" fill="url(#rabFur)"/>
+                  <!-- grey patch on top head -->
+                  <ellipse cx="55" cy="48" rx="22" ry="10" fill="#c8c0bc" opacity=".5"/>
+                  <!-- cheek fluff -->
+                  <ellipse cx="34" cy="72" rx="12" ry="9" fill="#ece8e4" opacity=".6"/>
+                  <ellipse cx="76" cy="72" rx="12" ry="9" fill="#ece8e4" opacity=".6"/>
+                  <!-- eyes -->
+                  <ellipse cx="40" cy="60" rx="8.5" ry="8" fill="#120820"/>
+                  <ellipse cx="70" cy="60" rx="8.5" ry="8" fill="#120820"/>
+                  <ellipse cx="40" cy="60" rx="7" ry="6.5" fill="url(#rabEye)"/>
+                  <ellipse cx="70" cy="60" rx="7" ry="6.5" fill="url(#rabEye)"/>
+                  <circle cx="40" cy="60" r="3.8" fill="#0e0618"/>
+                  <circle cx="70" cy="60" r="3.8" fill="#0e0618"/>
+                  <!-- eye shine -->
+                  <ellipse cx="42" cy="57.5" rx="2.2" ry="1.7" fill="rgba(255,255,255,.8)"/>
+                  <ellipse cx="72" cy="57.5" rx="2.2" ry="1.7" fill="rgba(255,255,255,.8)"/>
+                  <!-- nose – small Y shape -->
+                  <ellipse cx="55" cy="72" rx="4.5" ry="3.5" fill="#e07090"/>
+                  <line x1="55" y1="75" x2="55" y2="78" stroke="#e07090" stroke-width="1.5"/>
+                  <path d="M49 79 Q55 76 61 79" fill="none" stroke="#b04060" stroke-width="1.3" stroke-linecap="round"/>
+                  <!-- whiskers left -->
+                  <line x1="10" y1="70" x2="44" y2="73" stroke="#c8c0c0" stroke-width="1" opacity=".8"/>
+                  <line x1="10" y1="75" x2="44" y2="75" stroke="#c8c0c0" stroke-width="1" opacity=".8"/>
+                  <!-- whiskers right -->
+                  <line x1="100" y1="70" x2="66" y2="73" stroke="#c8c0c0" stroke-width="1" opacity=".8"/>
+                  <line x1="100" y1="75" x2="66" y2="75" stroke="#c8c0c0" stroke-width="1" opacity=".8"/>
+                  <!-- fur texture strokes on body -->
+                  <path d="M30 108 Q35 104 40 108" fill="none" stroke="#c0b8b4" stroke-width="1" opacity=".4"/>
+                  <path d="M68 106 Q73 102 78 106" fill="none" stroke="#c0b8b4" stroke-width="1" opacity=".4"/>
+                  <path d="M44 120 Q48 116 52 120" fill="none" stroke="#c0b8b4" stroke-width="1" opacity=".3"/>
+                </svg>
+              </div>
+              <span class="animal-label rabbit">Kelinci</span>
+            </div>
+
+          </div>
+
+          <!-- Bottom stats inside illustration card -->
+          <div class="hero-animals-banner">
+            <div class="animal-stat"><div class="num">500+</div><div class="lbl">Pasien Ditangani</div></div>
+            <div class="animal-stat"><div class="num">3+</div><div class="lbl">Dokter Berlisensi</div></div>
+            <div class="animal-stat"><div class="num">6</div><div class="lbl">Jenis Layanan</div></div>
+          </div>
+        </div>
+
+        <!-- Hours card -->
+        <div class="hero-card">
+          <p class="hero-card-title">Jam Operasional</p>
+          <div class="hero-hours">
+            <div class="hours-block"><div class="time">09.00</div><div class="label">Buka</div></div>
+            <div class="hours-sep">—</div>
+            <div class="hours-block"><div class="time">16.00</div><div class="label">Tutup</div></div>
+          </div>
+          <div class="hours-days">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+            Senin – Minggu (Termasuk Hari Libur)
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LAYANAN
+============================================================ -->
+<section id="layanan" class="section-pad" aria-labelledby="layanan-title">
+  <div class="container">
+    <div class="text-center">
+      <span class="badge badge-teal">Layanan Kami</span>
+      <h2 class="section-title" id="layanan-title" style="margin-top:10px">Layanan Medis &amp; Perawatan Hewan</h2>
+      <p class="section-subtitle">Kami menyediakan layanan veteriner lengkap untuk kucing, anjing, kelinci, dan hewan kecil lainnya.</p>
+    </div>
+    <div class="service-filter" role="group" aria-label="Filter layanan">
+      <button class="filter-btn active" data-filter="all">Semua</button>
+      <button class="filter-btn" data-filter="kesehatan">Kesehatan Umum</button>
+      <button class="filter-btn" data-filter="bedah">Bedah &amp; Gigi</button>
+      <button class="filter-btn" data-filter="grooming">Grooming &amp; Penitipan</button>
+      <button class="filter-btn" data-filter="diagnostik">Diagnostik</button>
+    </div>
+    <div class="services-grid" id="services-grid">
+      <!-- Konsultasi -->
+      <article class="service-card" data-category="kesehatan">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+        </div>
+        <h3>Konsultasi &amp; Pemeriksaan Kesehatan</h3>
+        <p>Pemeriksaan fisik menyeluruh oleh dokter hewan berlisensi. Kami mengevaluasi kondisi kesehatan umum, nutrisi, dan memberikan saran perawatan yang tepat untuk hewan kesayangan Anda.</p>
+        <span class="badge badge-teal cat-badge">Kesehatan Umum</span>
+      </article>
+      <!-- Vaksinasi -->
+      <article class="service-card" data-category="kesehatan">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6.5 10h-2v5h2v-5zm4 0h-2v5h2v-5zm8.5 7H4v2h15v-2zm-4.5-7h-2v5h2v-5zM11.5 1L2 6v2h19V6l-9.5-5z"/></svg>
+        </div>
+        <h3>Vaksinasi &amp; Obat Cacing / Anti-Kutu</h3>
+        <p>Program vaksinasi lengkap dan terjadwal untuk mencegah penyakit menular. Tersedia juga obat cacing rutin dan produk anti-kutu/anti-tungau untuk menjaga kesehatan hewan Anda.</p>
+        <span class="badge badge-teal cat-badge">Kesehatan Umum</span>
+      </article>
+      <!-- Sterilisasi -->
+      <article class="service-card" data-category="bedah">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+        </div>
+        <h3>Sterilisasi &amp; Bedah Minor/Mayor</h3>
+        <p>Prosedur sterilisasi (spay &amp; neuter) dan tindakan bedah dengan standar keamanan tinggi. Dilakukan di ruang operasi steril dengan peralatan modern dan anestesi yang aman.</p>
+        <span class="badge badge-amber cat-badge">Bedah &amp; Gigi</span>
+      </article>
+      <!-- Scaling Gigi -->
+      <article class="service-card" data-category="bedah">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 100 10A5 5 0 0012 2zm0 8a3 3 0 110-6 3 3 0 010 6zm0 2c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/></svg>
+        </div>
+        <h3>Scaling &amp; Perawatan Gigi Hewan</h3>
+        <p>Pembersihan karang gigi (scaling) dan perawatan kesehatan mulut hewan peliharaan. Mencegah penyakit periodontal dan menjaga kesehatan gigi-gusi hewan Anda tetap optimal.</p>
+        <span class="badge badge-amber cat-badge">Bedah &amp; Gigi</span>
+      </article>
+      <!-- Lab & USG -->
+      <article class="service-card" data-category="diagnostik">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 2v2h1v14l-4 4h16l-4-4V4h1V2H7zm4 15c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm2-4h-4V8h4v5z"/></svg>
+        </div>
+        <h3>Laboratorium &amp; USG / Diagnostik</h3>
+        <p>Pemeriksaan laboratorium darah dan urin, serta pemeriksaan ultrasonografi (USG) untuk diagnosis akurat. Hasil cepat membantu dokter menentukan penanganan yang tepat.</p>
+        <span class="badge badge-teal cat-badge">Diagnostik</span>
+      </article>
+      <!-- Grooming -->
+      <article class="service-card" data-category="grooming">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        </div>
+        <h3>Medical Grooming &amp; Penitipan Hewan</h3>
+        <p>Grooming berstandar medis meliputi mandi, potong kuku, dan pembersihan telinga. Layanan penitipan (boarding) nyaman dan aman dengan pemantauan selama jam operasional 09.00–16.00.</p>
+        <span class="badge badge-teal cat-badge">Grooming &amp; Penitipan</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DOKTER
+============================================================ -->
+<section id="dokter" class="section-pad" aria-labelledby="dokter-title">
+  <div class="container">
+    <div class="text-center">
+      <span class="badge badge-teal">Tim Kami</span>
+      <h2 class="section-title" id="dokter-title" style="margin-top:10px">Tim Dokter Hewan Kami</h2>
+      <p class="section-subtitle">Ditangani oleh dokter hewan berlisensi dengan pengalaman dan dedikasi tinggi dalam merawat hewan kesayangan Anda.</p>
+    </div>
+    <div class="doctors-grid">
+      <!-- Dokter 1: Anastasia -->
+      <article class="doctor-card">
+        <div class="doctor-avatar" role="img" aria-label="Foto drh. Anastasia R.">
+          <!-- Female doctor SVG portrait – teal accent -->
+          <svg viewBox="0 0 110 120" xmlns="http://www.w3.org/2000/svg">
+            <!-- coat / body -->
+            <rect x="15" y="78" width="80" height="50" rx="8" fill="#e0fdf4"/>
+            <rect x="28" y="78" width="54" height="50" rx="6" fill="#fff"/>
+            <!-- coat lapels -->
+            <polygon points="55,82 42,78 36,120 55,105" fill="#d1fae5"/>
+            <polygon points="55,82 68,78 74,120 55,105" fill="#d1fae5"/>
+            <!-- stethoscope -->
+            <path d="M44 92 Q40 100 44 108 Q48 114 54 112" fill="none" stroke="#12998a" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="54" cy="112" r="4" fill="none" stroke="#12998a" stroke-width="2"/>
+            <circle cx="41" cy="92" r="2" fill="#12998a"/>
+            <circle cx="47" cy="90" r="2" fill="#12998a"/>
+            <!-- neck -->
+            <rect x="47" y="68" width="16" height="14" rx="7" fill="#f9d4b6"/>
+            <!-- head -->
+            <ellipse cx="55" cy="54" rx="24" ry="22" fill="#f9d4b6"/>
+            <!-- hair – long dark -->
+            <ellipse cx="55" cy="40" rx="24" ry="14" fill="#2d1b0e"/>
+            <rect x="31" y="40" width="8" height="28" rx="4" fill="#2d1b0e"/>
+            <rect x="71" y="40" width="8" height="28" rx="4" fill="#2d1b0e"/>
+            <!-- ears -->
+            <ellipse cx="31" cy="56" rx="4" ry="5" fill="#f9d4b6"/>
+            <ellipse cx="79" cy="56" rx="4" ry="5" fill="#f9d4b6"/>
+            <!-- eyes -->
+            <ellipse cx="45" cy="54" rx="4.5" ry="5" fill="#fff"/>
+            <ellipse cx="65" cy="54" rx="4.5" ry="5" fill="#fff"/>
+            <circle cx="45" cy="55" r="2.8" fill="#2d1b0e"/>
+            <circle cx="65" cy="55" r="2.8" fill="#2d1b0e"/>
+            <circle cx="46" cy="53.5" r="1" fill="#fff"/>
+            <circle cx="66" cy="53.5" r="1" fill="#fff"/>
+            <!-- eyebrows -->
+            <path d="M41 49 Q45 47 49 49" fill="none" stroke="#2d1b0e" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M61 49 Q65 47 69 49" fill="none" stroke="#2d1b0e" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- nose -->
+            <ellipse cx="55" cy="62" rx="2.5" ry="2" fill="#e8b89a"/>
+            <!-- smile -->
+            <path d="M49 67 Q55 72 61 67" fill="none" stroke="#c97a5a" stroke-width="1.8" stroke-linecap="round"/>
+            <!-- lip color -->
+            <ellipse cx="55" cy="68" rx="5" ry="2.5" fill="#e88a7a" opacity=".5"/>
+            <!-- name badge -->
+            <rect x="38" y="96" width="34" height="14" rx="3" fill="#12998a"/>
+            <rect x="40" y="98" width="30" height="2.5" rx="1" fill="#fff" opacity=".8"/>
+            <rect x="42" y="102" width="22" height="2" rx="1" fill="#fff" opacity=".5"/>
+          </svg>
+        </div>
+        <h3 class="doctor-name">drh. Anastasia R., M.Si</h3>
+        <p class="doctor-spec">Dokter Hewan Umum &amp; Bedah</p>
+        <p class="doctor-meta">🐾 Spesialisasi: Kucing &amp; Anjing</p>
+        <p class="doctor-meta">📚 8 Tahun Pengalaman</p>
+        <div class="doctor-schedule">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+          Senin–Rabu, 09.00–16.00
+        </div>
+      </article>
+
+      <!-- Dokter 2: Benny -->
+      <article class="doctor-card">
+        <div class="doctor-avatar" role="img" aria-label="Foto drh. Benny M.">
+          <!-- Male doctor SVG portrait – amber accent -->
+          <svg viewBox="0 0 110 120" xmlns="http://www.w3.org/2000/svg">
+            <!-- coat / body -->
+            <rect x="15" y="78" width="80" height="50" rx="8" fill="#fff7ed"/>
+            <rect x="28" y="78" width="54" height="50" rx="6" fill="#fff"/>
+            <!-- coat lapels -->
+            <polygon points="55,82 42,78 36,120 55,105" fill="#fed7aa"/>
+            <polygon points="55,82 68,78 74,120 55,105" fill="#fed7aa"/>
+            <!-- stethoscope -->
+            <path d="M44 92 Q40 100 44 108 Q48 114 54 112" fill="none" stroke="#f97316" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="54" cy="112" r="4" fill="none" stroke="#f97316" stroke-width="2"/>
+            <circle cx="41" cy="92" r="2" fill="#f97316"/>
+            <circle cx="47" cy="90" r="2" fill="#f97316"/>
+            <!-- neck -->
+            <rect x="47" y="68" width="16" height="14" rx="7" fill="#c68642"/>
+            <!-- head -->
+            <ellipse cx="55" cy="54" rx="24" ry="22" fill="#c68642"/>
+            <!-- short hair -->
+            <ellipse cx="55" cy="36" rx="23" ry="11" fill="#1a0a00"/>
+            <rect x="31" y="36" width="6" height="12" rx="3" fill="#1a0a00"/>
+            <rect x="73" y="36" width="6" height="12" rx="3" fill="#1a0a00"/>
+            <!-- ears -->
+            <ellipse cx="31" cy="56" rx="4" ry="5" fill="#c68642"/>
+            <ellipse cx="79" cy="56" rx="4" ry="5" fill="#c68642"/>
+            <!-- eyes -->
+            <ellipse cx="45" cy="54" rx="4.5" ry="5" fill="#fff"/>
+            <ellipse cx="65" cy="54" rx="4.5" ry="5" fill="#fff"/>
+            <circle cx="45" cy="55" r="2.8" fill="#1a0a00"/>
+            <circle cx="65" cy="55" r="2.8" fill="#1a0a00"/>
+            <circle cx="46" cy="53.5" r="1" fill="#fff"/>
+            <circle cx="66" cy="53.5" r="1" fill="#fff"/>
+            <!-- eyebrows – thicker masculine -->
+            <path d="M41 49 Q45 47.5 49 49" fill="none" stroke="#1a0a00" stroke-width="2" stroke-linecap="round"/>
+            <path d="M61 49 Q65 47.5 69 49" fill="none" stroke="#1a0a00" stroke-width="2" stroke-linecap="round"/>
+            <!-- nose -->
+            <ellipse cx="55" cy="62" rx="3" ry="2.5" fill="#a0622a"/>
+            <!-- mouth -->
+            <path d="M49 68 Q55 73 61 68" fill="none" stroke="#8b4513" stroke-width="2" stroke-linecap="round"/>
+            <!-- name badge -->
+            <rect x="38" y="96" width="34" height="14" rx="3" fill="#f97316"/>
+            <rect x="40" y="98" width="30" height="2.5" rx="1" fill="#fff" opacity=".8"/>
+            <rect x="42" y="102" width="22" height="2" rx="1" fill="#fff" opacity=".5"/>
+          </svg>
+        </div>
+        <h3 class="doctor-name">drh. Benny M., M.Vet</h3>
+        <p class="doctor-spec">Spesialis Penyakit Dalam Hewan</p>
+        <p class="doctor-meta">🐾 Spesialisasi: Kelinci &amp; Small Animals</p>
+        <p class="doctor-meta">📚 6 Tahun Pengalaman</p>
+        <div class="doctor-schedule">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+          Kamis–Sabtu, 09.00–16.00
+        </div>
+      </article>
+
+      <!-- Dokter 3: Clara -->
+      <article class="doctor-card">
+        <div class="doctor-avatar" role="img" aria-label="Foto drh. Clara S.">
+          <!-- Female doctor SVG portrait – purple accent -->
+          <svg viewBox="0 0 110 120" xmlns="http://www.w3.org/2000/svg">
+            <!-- coat / body -->
+            <rect x="15" y="78" width="80" height="50" rx="8" fill="#f5f3ff"/>
+            <rect x="28" y="78" width="54" height="50" rx="6" fill="#fff"/>
+            <!-- coat lapels -->
+            <polygon points="55,82 42,78 36,120 55,105" fill="#ddd6fe"/>
+            <polygon points="55,82 68,78 74,120 55,105" fill="#ddd6fe"/>
+            <!-- stethoscope -->
+            <path d="M44 92 Q40 100 44 108 Q48 114 54 112" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="54" cy="112" r="4" fill="none" stroke="#7c3aed" stroke-width="2"/>
+            <circle cx="41" cy="92" r="2" fill="#7c3aed"/>
+            <circle cx="47" cy="90" r="2" fill="#7c3aed"/>
+            <!-- neck -->
+            <rect x="47" y="68" width="16" height="14" rx="7" fill="#f5c8a0"/>
+            <!-- head -->
+            <ellipse cx="55" cy="54" rx="24" ry="22" fill="#f5c8a0"/>
+            <!-- hair – shoulder length, lighter brown -->
+            <ellipse cx="55" cy="39" rx="24" ry="13" fill="#6b3a1f"/>
+            <rect x="31" y="39" width="8" height="30" rx="4" fill="#6b3a1f"/>
+            <rect x="71" y="39" width="8" height="30" rx="4" fill="#6b3a1f"/>
+            <!-- hair highlights -->
+            <ellipse cx="45" cy="38" rx="6" ry="4" fill="#8b5e3c" opacity=".5"/>
+            <!-- ears -->
+            <ellipse cx="31" cy="56" rx="4" ry="5" fill="#f5c8a0"/>
+            <ellipse cx="79" cy="56" rx="4" ry="5" fill="#f5c8a0"/>
+            <!-- eyes – slightly larger, defined lashes -->
+            <ellipse cx="45" cy="54" rx="5" ry="5.5" fill="#fff"/>
+            <ellipse cx="65" cy="54" rx="5" ry="5.5" fill="#fff"/>
+            <circle cx="45" cy="55" r="3" fill="#2d1b0e"/>
+            <circle cx="65" cy="55" r="3" fill="#2d1b0e"/>
+            <circle cx="46" cy="53" r="1.1" fill="#fff"/>
+            <circle cx="66" cy="53" r="1.1" fill="#fff"/>
+            <!-- lashes hint -->
+            <path d="M40 50 Q42 48 44 49" fill="none" stroke="#2d1b0e" stroke-width="1" opacity=".7"/>
+            <path d="M60 50 Q62 48 64 49" fill="none" stroke="#2d1b0e" stroke-width="1" opacity=".7"/>
+            <!-- eyebrows – arched -->
+            <path d="M41 49 Q45 46.5 49 48.5" fill="none" stroke="#6b3a1f" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M61 48.5 Q65 46.5 69 49" fill="none" stroke="#6b3a1f" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- nose -->
+            <ellipse cx="55" cy="62" rx="2.5" ry="2" fill="#dba882"/>
+            <!-- smile -->
+            <path d="M49 67 Q55 73 61 67" fill="none" stroke="#c07a5a" stroke-width="1.8" stroke-linecap="round"/>
+            <!-- lip gloss -->
+            <ellipse cx="55" cy="68" rx="5.5" ry="2.5" fill="#c77dac" opacity=".45"/>
+            <!-- glasses -->
+            <rect x="38" y="50" width="14" height="10" rx="4" fill="none" stroke="#7c3aed" stroke-width="1.5"/>
+            <rect x="58" y="50" width="14" height="10" rx="4" fill="none" stroke="#7c3aed" stroke-width="1.5"/>
+            <line x1="52" y1="55" x2="58" y2="55" stroke="#7c3aed" stroke-width="1.5"/>
+            <line x1="34" y1="55" x2="38" y2="55" stroke="#7c3aed" stroke-width="1.2"/>
+            <line x1="72" y1="55" x2="76" y2="55" stroke="#7c3aed" stroke-width="1.2"/>
+            <!-- name badge -->
+            <rect x="38" y="96" width="34" height="14" rx="3" fill="#7c3aed"/>
+            <rect x="40" y="98" width="30" height="2.5" rx="1" fill="#fff" opacity=".8"/>
+            <rect x="42" y="102" width="22" height="2" rx="1" fill="#fff" opacity=".5"/>
+          </svg>
+        </div>
+        <h3 class="doctor-name">drh. Clara S., M.Sc</h3>
+        <p class="doctor-spec">Dokter Hewan &amp; Spesialis Diagnostik</p>
+        <p class="doctor-meta">🐾 Spesialisasi: Diagnostik &amp; Radiologi</p>
+        <p class="doctor-meta">📚 5 Tahun Pengalaman</p>
+        <div class="doctor-schedule">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+          Jumat–Minggu, 09.00–16.00
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BOOKING FORM
+============================================================ -->
+<section id="booking" class="section-pad" aria-labelledby="booking-title">
+  <div class="container">
+    <div class="booking-layout">
+      <div class="booking-info">
+        <span class="badge badge-teal">Jadwal Kunjungan</span>
+        <h2 class="section-title" id="booking-title" style="margin-top:10px">Formulir Janji Temu Online</h2>
+        <p>Buat janji temu dengan mudah. Setelah mengirim formulir, kami akan menghubungi Anda via WhatsApp untuk konfirmasi.</p>
+        <div class="info-list">
+          <div class="info-item">
+            <div class="info-item-icon"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg></div>
+            <div class="info-item-text"><strong>Jam Buka</strong><span>Senin – Minggu, 09.00 – 16.00 WITA</span></div>
+          </div>
+          <div class="info-item">
+            <div class="info-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+            <div class="info-item-text"><strong>Lokasi</strong><span>Perumahan Tamansari Metropolitan, Paniki Bawah, Manado</span></div>
+          </div>
+          <div class="info-item">
+            <div class="info-item-icon"><svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg></div>
+            <div class="info-item-text"><strong>Konfirmasi via WhatsApp</strong><span>Tim kami akan menghubungi dalam 1–2 jam kerja</span></div>
+          </div>
+          <div class="info-item">
+            <div class="info-item-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+            <div class="info-item-text"><strong>Penanganan Profesional</strong><span>Semua dokter hewan kami memiliki lisensi resmi</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <form id="appointment-form" novalidate aria-label="Formulir janji temu">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="nama-pemilik">Nama Pemilik <span class="req" aria-label="wajib diisi">*</span></label>
+              <input class="form-control" type="text" id="nama-pemilik" name="nama_pemilik" placeholder="Nama lengkap Anda" autocomplete="name" required />
+              <span class="form-error" id="err-nama" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="whatsapp">Nomor WhatsApp <span class="req" aria-label="wajib diisi">*</span></label>
+              <input class="form-control" type="tel" id="whatsapp" name="whatsapp" placeholder="08xxxxxxxxxx" autocomplete="tel" required />
+              <span class="form-error" id="err-wa" role="alert"></span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="jenis-hewan">Jenis Hewan <span class="req" aria-label="wajib diisi">*</span></label>
+              <select class="form-control" id="jenis-hewan" name="jenis_hewan" required>
+                <option value="">— Pilih Jenis Hewan —</option>
+                <option value="Kucing">Kucing</option>
+                <option value="Anjing">Anjing</option>
+                <option value="Kelinci">Kelinci</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+              <span class="form-error" id="err-jenis" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="nama-hewan">Nama &amp; Usia Hewan <span class="req" aria-label="wajib diisi">*</span></label>
+              <input class="form-control" type="text" id="nama-hewan" name="nama_hewan" placeholder="Contoh: Mochi, 2 tahun" required />
+              <span class="form-error" id="err-hewan" role="alert"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="layanan">Layanan yang Dibutuhkan <span class="req" aria-label="wajib diisi">*</span></label>
+            <select class="form-control" id="layanan" name="layanan" required>
+              <option value="">— Pilih Layanan —</option>
+              <option value="Konsultasi & Pemeriksaan Kesehatan">Konsultasi &amp; Pemeriksaan Kesehatan</option>
+              <option value="Vaksinasi & Obat Cacing / Anti-Kutu">Vaksinasi &amp; Obat Cacing / Anti-Kutu</option>
+              <option value="Sterilisasi & Bedah Minor/Mayor">Sterilisasi &amp; Bedah Minor/Mayor</option>
+              <option value="Scaling & Perawatan Gigi">Scaling &amp; Perawatan Gigi</option>
+              <option value="Laboratorium & USG / Diagnostik">Laboratorium &amp; USG / Diagnostik</option>
+              <option value="Medical Grooming & Penitipan">Medical Grooming &amp; Penitipan</option>
+            </select>
+            <span class="form-error" id="err-layanan" role="alert"></span>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="tanggal">Tanggal Kunjungan <span class="req" aria-label="wajib diisi">*</span></label>
+              <input class="form-control" type="date" id="tanggal" name="tanggal" required />
+              <span class="form-error" id="err-tanggal" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="sesi">Sesi Waktu <span class="req" aria-label="wajib diisi">*</span></label>
+              <select class="form-control" id="sesi" name="sesi" required>
+                <option value="">— Pilih Sesi —</option>
+                <option value="Pagi (09.00 – 10.30)">Pagi (09.00 – 10.30)</option>
+                <option value="Siang Awal (10.30 – 12.00)">Siang Awal (10.30 – 12.00)</option>
+                <option value="Siang (12.00 – 13.30)">Siang (12.00 – 13.30)</option>
+                <option value="Sore Awal (13.30 – 15.00)">Sore Awal (13.30 – 15.00)</option>
+                <option value="Sore (15.00 – 16.00)">Sore (15.00 – 16.00)</option>
+              </select>
+              <span class="form-error" id="err-sesi" role="alert"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="keluhan">Keluhan / Catatan Tambahan</label>
+            <textarea class="form-control" id="keluhan" name="keluhan" rows="3" placeholder="Deskripsikan keluhan atau kebutuhan khusus hewan Anda..." style="resize:vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit" id="submit-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+            Kirim Janji Temu
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIRMATION MODAL -->
+<div id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <button class="modal-close-x" id="modal-close-x" aria-label="Tutup">&times;</button>
+    <div class="modal-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+    </div>
+    <h2 class="modal-title" id="modal-title">Janji Temu Berhasil Dibuat!</h2>
+    <p class="modal-sub">Terima kasih! Kami akan menghubungi Anda via WhatsApp untuk konfirmasi jadwal.</p>
+    <div class="modal-summary" id="modal-summary" role="region" aria-label="Ringkasan janji temu"></div>
+    <div class="modal-actions">
+      <button class="btn btn-outline" id="modal-book-another">Buat Janji Lain</button>
+      <a href="https://maps.app.goo.gl" target="_blank" rel="noopener noreferrer" class="btn btn-teal" id="modal-maps">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Lihat Lokasi
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     FAQ
+============================================================ -->
+<section id="faq" class="section-pad" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="text-center">
+      <span class="badge badge-teal">FAQ</span>
+      <h2 class="section-title" id="faq-title" style="margin-top:10px">Pertanyaan yang Sering Diajukan</h2>
+      <p class="section-subtitle">Jawaban atas pertanyaan umum seputar layanan dan klinik kami.</p>
+    </div>
+    <div class="faq-grid">
+      <div>
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false">
+            Kapan jam buka klinik?
+            <svg class="accordion-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div class="accordion-body">
+            Klinik Hewan Satwa Prima buka setiap hari — <strong>Senin hingga Minggu termasuk hari libur nasional</strong> — mulai pukul <strong>09.00 hingga 16.00 WITA</strong>. Disarankan untuk melakukan janji temu terlebih dahulu agar tidak menunggu terlalu lama.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false">
+            Di mana lokasi klinik Satwa Prima?
+            <svg class="accordion-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div class="accordion-body">
+            Klinik kami berlokasi di <strong>Perumahan Tamansari Metropolitan, Paniki Bawah, Kec. Mapanget, Kota Manado, Sulawesi Utara 95256</strong>. Koordinat GPS: <strong>1.505512, 124.902888</strong>. Anda bisa menggunakan Google Maps untuk navigasi langsung ke lokasi kami.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false">
+            Bagaimana cara membuat janji temu?
+            <svg class="accordion-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div class="accordion-body">
+            Anda dapat membuat janji temu melalui <strong>formulir online di halaman ini</strong>, menghubungi kami via WhatsApp, atau datang langsung ke klinik selama jam operasional 09.00–16.00. Pembuatan janji online disarankan untuk memastikan ketersediaan dokter.
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false">
+            Apa yang perlu dipersiapkan sebelum vaksinasi?
+            <svg class="accordion-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div class="accordion-body">
+            Pastikan hewan dalam kondisi <strong>sehat dan tidak sedang sakit</strong> sebelum divaksin. Hewan sebaiknya sudah <strong>bebas kutu dan cacingan</strong>. Jika ada keraguan tentang kondisi hewan, konsultasikan terlebih dahulu dengan dokter kami. Bawa juga buku vaksin/catatan kesehatan hewan jika ada.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false">
+            Bagaimana persiapan sebelum operasi/bedah?
+            <svg class="accordion-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div class="accordion-body">
+            Hewan harus <strong>puasa (tidak makan) selama 8–12 jam sebelum operasi</strong>, tetapi tetap boleh minum air. Dokter kami akan memberikan panduan lengkap saat konsultasi pra-operasi. Pastikan hewan dalam kondisi stabil dan datang tepat waktu sesuai jadwal yang disepakati.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false">
+            Hewan apa saja yang dilayani?
+            <svg class="accordion-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div class="accordion-body">
+            Kami melayani <strong>kucing, anjing, kelinci, dan berbagai hewan kecil lainnya</strong> (small animals). Tim dokter hewan kami berpengalaman dalam menangani berbagai jenis hewan peliharaan dengan penuh kasih sayang dan profesionalisme.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONI
+============================================================ -->
+<section id="testimoni" class="section-pad" aria-labelledby="testi-title">
+  <div class="container">
+    <div class="text-center">
+      <span class="badge badge-teal">Testimoni</span>
+      <h2 class="section-title" id="testi-title" style="margin-top:10px">Kata Pemilik Hewan Peliharaan</h2>
+      <p class="section-subtitle">Kepercayaan dan kebahagiaan klien kami adalah motivasi terbesar kami.</p>
+    </div>
+    <div class="testi-grid">
+      <article class="testi-card">
+        <div class="testi-stars" aria-label="Rating 5 bintang">★★★★★</div>
+        <p class="testi-text">"Dokter-dokternya sangat sabar dan teliti. Kucing saya, Mochi, yang tadinya sangat gelisah langsung tenang ditangani. Fasilitas bersih dan nyaman, prosedur dijelaskan dengan detail. Sangat puas!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">SR</div>
+          <div>
+            <div class="testi-name">Sinta R.</div>
+            <div class="testi-pet">Pemilik Mochi (Kucing Persia)</div>
+          </div>
+        </div>
+      </article>
+      <article class="testi-card">
+        <div class="testi-stars" aria-label="Rating 5 bintang">★★★★★</div>
+        <p class="testi-text">"Sterilisasi anjing saya berjalan lancar banget. Tim medisnya profesional, penjelasan pre dan post-op sangat jelas. Lokasi di Tamansari Metropolitan mudah ditemukan. Recommended buat warga Manado!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true" style="background:linear-gradient(135deg,#f97316,#c05208)">FH</div>
+          <div>
+            <div class="testi-name">Ferry H.</div>
+            <div class="testi-pet">Pemilik Bruno (Golden Retriever)</div>
+          </div>
+        </div>
+      </article>
+      <article class="testi-card">
+        <div class="testi-stars" aria-label="Rating 5 bintang">★★★★★</div>
+        <p class="testi-text">"Grooming service-nya luar biasa! Kelinci saya jadi bersih dan wangi. Yang bikin saya betah, stafnya sangat ramah dan sayang sama hewan. Pasti balik lagi ke sini!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true" style="background:linear-gradient(135deg,#8b5cf6,#4c1d95)">LM</div>
+          <div>
+            <div class="testi-name">Lina M.</div>
+            <div class="testi-pet">Pemilik Snowball (Kelinci Holland Lop)</div>
+          </div>
+        </div>
+      </article>
+      <article class="testi-card">
+        <div class="testi-stars" aria-label="Rating 4 bintang">★★★★☆</div>
+        <p class="testi-text">"Sangat membantu saat kucing saya sakit mendadak. Booking online-nya mudah sekali, langsung dapat konfirmasi via WhatsApp. Dokternya ramah dan penuh perhatian. Terima kasih Satwa Prima!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true" style="background:linear-gradient(135deg,#06b6d4,#0e7490)">DP</div>
+          <div>
+            <div class="testi-name">Dinda P.</div>
+            <div class="testi-pet">Pemilik Oreo (Kucing Domestic)</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LOKASI
+============================================================ -->
+<section id="lokasi" class="section-pad" aria-labelledby="lokasi-title">
+  <div class="container">
+    <div class="text-center">
+      <span class="badge badge-teal">Lokasi</span>
+      <h2 class="section-title" id="lokasi-title" style="margin-top:10px">Temukan Kami di Manado</h2>
+      <p class="section-subtitle">Kami berlokasi strategis di Perumahan Tamansari Metropolitan, mudah dijangkau dari berbagai penjuru Kota Manado.</p>
+    </div>
+    <div class="lokasi-grid">
+      <div class="location-card">
+        <h3>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Informasi Lokasi
+        </h3>
+        <div class="location-row">
+          <div class="loc-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+          <div class="loc-text">
+            <strong>Nama Klinik</strong>
+            <span>Klinik Hewan di Manado Satwa Prima Tamansari</span>
+          </div>
+        </div>
+        <div class="location-row">
+          <div class="loc-icon"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+          <div class="loc-text">
+            <strong>Alamat</strong>
+            <span>Perumahan Tamansari Metropolitan, Paniki Bawah, Kec. Mapanget, Kota Manado, Sulawesi Utara 95256</span>
+          </div>
+        </div>
+        <div class="location-row">
+          <div class="loc-icon"><svg viewBox="0 0 24 24"><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0013 3.06V1h-2v2.06A8.994 8.994 0 003.06 11H1v2h2.06A8.994 8.994 0 0011 20.94V23h2v-2.06A8.994 8.994 0 0020.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg></div>
+          <div class="loc-text">
+            <strong>Koordinat GPS</strong>
+            <span>1.505512, 124.902888</span>
+          </div>
+        </div>
+        <div class="location-row">
+          <div class="loc-icon"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg></div>
+          <div class="loc-text">
+            <strong>Jam Buka</strong>
+            <span>Senin – Minggu, <strong>09.00 – 16.00 WITA</strong></span>
+          </div>
+        </div>
+        <hr class="divider" />
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <a href="https://maps.app.goo.gl" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Buka di Google Maps
+          </a>
+          <button class="coord-copy" id="copy-coord" title="Salin koordinat" aria-label="Salin koordinat GPS">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            Salin Koordinat
+          </button>
+        </div>
+      </div>
+      <div class="map-placeholder" role="img" aria-label="Peta lokasi Klinik Hewan Satwa Prima di Tamansari Metropolitan, Manado">
+        <div class="map-bg"></div>
+        <div class="map-pin-wrap">
+          <div class="map-pin" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <p class="map-label">Klinik Hewan Satwa Prima</p>
+          <p class="map-coord">Tamansari Metropolitan, Paniki Bawah, Manado</p>
+          <p class="map-coord">1.505512, 124.902888</p>
+          <div class="map-actions">
+            <a href="https://maps.app.goo.gl" target="_blank" rel="noopener noreferrer" class="btn btn-teal">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Navigasi ke Klinik
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=1.505512,124.902888" target="_blank" rel="noopener noreferrer" class="coord-copy">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0013 3.06V1h-2v2.06A8.994 8.994 0 003.06 11H1v2h2.06A8.994 8.994 0 0011 20.94V23h2v-2.06A8.994 8.994 0 0020.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+              Buka via Koordinat
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer id="kontak" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-brand-icon" style="width:42px;height:42px;border-radius:11px;" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="#fff" width="24" height="24"><path d="M12 2C8.5 2 5.5 4.5 5.5 8c0 2.5 1.5 4.7 3.7 5.7L7 21h10l-2.2-7.3C16.9 12.7 18.5 10.5 18.5 8c0-3.5-3-6-6.5-6zm-2 10.5c-.6-.3-1.1-.8-1.4-1.3l1.4.5v.8zm4 0v-.8l1.4-.5c-.3.5-.8 1-1.4 1.3z"/></svg>
+        </div>
+        <div class="name" style="margin-top:4px">Satwa Prima</div>
+        <div class="sub">Klinik Hewan di Manado Satwa Prima Tamansari</div>
+        <p>Memberikan perawatan veteriner terbaik dengan kasih sayang dan teknologi modern untuk hewan kesayangan Anda di Kota Manado, Sulawesi Utara.</p>
+        <div class="social-links" style="margin-top:16px">
+          <a href="#" class="social-link" aria-label="Instagram Satwa Prima">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Facebook Satwa Prima">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="WhatsApp Satwa Prima">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Navigasi</p>
+        <ul class="footer-links">
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#layanan">Layanan</a></li>
+          <li><a href="#dokter">Tim Dokter</a></li>
+          <li><a href="#booking">Jadwal & Booking</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#lokasi">Lokasi</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">Layanan</p>
+        <ul class="footer-links">
+          <li><a href="#layanan">Konsultasi Kesehatan</a></li>
+          <li><a href="#layanan">Vaksinasi</a></li>
+          <li><a href="#layanan">Sterilisasi & Bedah</a></li>
+          <li><a href="#layanan">Scaling Gigi</a></li>
+          <li><a href="#layanan">Lab & USG</a></li>
+          <li><a href="#layanan">Grooming & Boarding</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">Kontak &amp; Info</p>
+        <ul class="footer-contact">
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Perumahan Tamansari Metropolitan, Paniki Bawah, Kec. Mapanget, Kota Manado, Sulawesi Utara 95256</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            <span>Senin – Minggu, <strong style="color:rgba(255,255,255,.85)">09.00 – 16.00 WITA</strong></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+            <a href="tel:+62811000000" aria-label="Hubungi via telepon">+62 811-000-0000 (WhatsApp)</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0013 3.06V1h-2v2.06A8.994 8.994 0 003.06 11H1v2h2.06A8.994 8.994 0 0011 20.94V23h2v-2.06A8.994 8.994 0 0020.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+            <a href="https://www.google.com/maps/search/?api=1&query=1.505512,124.902888" target="_blank" rel="noopener noreferrer">1.505512, 124.902888</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <a href="https://maps.app.goo.gl" target="_blank" rel="noopener noreferrer">Buka di Google Maps</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Klinik Hewan Satwa Prima. Semua hak dilindungi.</span>
+      <span>Klinik Hewan di Manado Satwa Prima Tamansari</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/62811000000" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Hubungi via WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // ============================================================
+  // NAVBAR: sticky scroll shadow + active link highlighting
+  // ============================================================
+  const navbar = document.getElementById('navbar');
+  const sections = document.querySelectorAll('section[id], footer[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 10);
+
+    // Active nav link
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 90) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+  }, { passive: true });
+
+  // ============================================================
+  // HAMBURGER MOBILE MENU
+  // ============================================================
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Close on mobile nav link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ============================================================
+  // SERVICE FILTER
+  // ============================================================
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const serviceCards = document.querySelectorAll('.service-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      serviceCards.forEach(card => {
+        const show = filter === 'all' || card.dataset.category === filter;
+        card.setAttribute('data-hidden', String(!show));
+      });
+    });
+  });
+
+  // ============================================================
+  // ACCORDION FAQ
+  // ============================================================
+  document.querySelectorAll('.accordion-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const body = btn.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.accordion-btn').forEach(b => { b.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); });
+
+      if (!isOpen) {
+        body.classList.add('open');
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ============================================================
+  // DATE INPUT: set min to today
+  // ============================================================
+  const dateInput = document.getElementById('tanggal');
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  dateInput.min = `${yyyy}-${mm}-${dd}`;
+
+  // ============================================================
+  // APPOINTMENT FORM + MODAL
+  // ============================================================
+  const form = document.getElementById('appointment-form');
+  const modalOverlay = document.getElementById('modal-overlay');
+  const modalSummary = document.getElementById('modal-summary');
+  const modalCloseX = document.getElementById('modal-close-x');
+  const modalBookAnother = document.getElementById('modal-book-another');
+
+  function getVal(id) { return document.getElementById(id).value.trim(); }
+  function showErr(id, msg) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = msg;
+  }
+  function clearErr(id) { showErr(id, ''); }
+  function markInvalid(inputId) { document.getElementById(inputId).classList.add('invalid'); }
+  function clearInvalid(inputId) { document.getElementById(inputId).classList.remove('invalid'); }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    const [y, m, d] = dateStr.split('-');
+    const months = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+    return `${d} ${months[parseInt(m,10)-1]} ${y}`;
+  }
+
+  form.querySelectorAll('.form-control').forEach(input => {
+    input.addEventListener('input', () => { input.classList.remove('invalid'); });
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    let valid = true;
+
+    const fields = [
+      { inputId: 'nama-pemilik', errId: 'err-nama', label: 'Nama pemilik' },
+      { inputId: 'whatsapp', errId: 'err-wa', label: 'Nomor WhatsApp' },
+      { inputId: 'jenis-hewan', errId: 'err-jenis', label: 'Jenis hewan' },
+      { inputId: 'nama-hewan', errId: 'err-hewan', label: 'Nama & usia hewan' },
+      { inputId: 'layanan', errId: 'err-layanan', label: 'Layanan' },
+      { inputId: 'tanggal', errId: 'err-tanggal', label: 'Tanggal' },
+      { inputId: 'sesi', errId: 'err-sesi', label: 'Sesi waktu' },
+    ];
+
+    fields.forEach(f => {
+      clearErr(f.errId); clearInvalid(f.inputId);
+      if (!getVal(f.inputId)) {
+        showErr(f.errId, `${f.label} wajib diisi.`);
+        markInvalid(f.inputId);
+        valid = false;
+      }
+    });
+
+    // WhatsApp format check
+    const wa = getVal('whatsapp');
+    if (wa && !/^(\+62|62|0)[0-9]{8,13}$/.test(wa.replace(/\s/g, ''))) {
+      showErr('err-wa', 'Format nomor WhatsApp tidak valid.');
+      markInvalid('whatsapp');
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    // Build summary
+    const data = {
+      'Nama Pemilik': getVal('nama-pemilik'),
+      'WhatsApp': getVal('whatsapp'),
+      'Jenis Hewan': getVal('jenis-hewan'),
+      'Nama & Usia Hewan': getVal('nama-hewan'),
+      'Layanan': document.getElementById('layanan').options[document.getElementById('layanan').selectedIndex].text,
+      'Tanggal': formatDate(getVal('tanggal')),
+      'Sesi Waktu': document.getElementById('sesi').options[document.getElementById('sesi').selectedIndex].text,
+      'Lokasi': 'Paniki Bawah, Tamansari Metropolitan, Manado',
+    };
+
+    modalSummary.innerHTML = Object.entries(data).map(([k, v]) =>
+      `<div class="modal-row"><span class="key">${k}</span><span class="val">${v}</span></div>`
+    ).join('');
+
+    modalOverlay.classList.add('open');
+    document.getElementById('modal-title').focus();
+  });
+
+  function closeModal() {
+    modalOverlay.classList.remove('open');
+  }
+
+  modalCloseX.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  modalBookAnother.addEventListener('click', () => {
+    closeModal();
+    form.reset();
+    form.querySelectorAll('.form-control').forEach(el => el.classList.remove('invalid'));
+    form.querySelectorAll('.form-error').forEach(el => el.textContent = '');
+    setTimeout(() => document.getElementById('booking').scrollIntoView({ behavior: 'smooth' }), 100);
+  });
+
+  // ============================================================
+  // COPY COORDINATES
+  // ============================================================
+  const copyCoordBtn = document.getElementById('copy-coord');
+  copyCoordBtn.addEventListener('click', () => {
+    const coord = '1.505512, 124.902888';
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(coord).then(() => {
+        const original = copyCoordBtn.innerHTML;
+        copyCoordBtn.innerHTML = `<svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Tersalin!`;
+        setTimeout(() => { copyCoordBtn.innerHTML = original; }, 2000);
+      });
+    }
+  });
+</script>
+</body>
+</html>
